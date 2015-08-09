@@ -13,8 +13,8 @@ users = User.all
 
 50.times do |variable|
   Wiki.create!(
-    title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraph
+    title:    Faker::Lorem.sentence,
+    body:     Faker::Lorem.paragraph
     )
 end
 

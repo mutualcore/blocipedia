@@ -21,4 +21,14 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= 'standard'
   end
+
+  def upgrade_account(user)
+    user.role = 'premium'
+    user.save
+  end
+
+  def downgrade_account(user)
+    user.role = 'standard'
+    user.save
+  end
 end
