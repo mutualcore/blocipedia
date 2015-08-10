@@ -1,0 +1,13 @@
+<p><strong>Account Type: </strong><%= current_user.role.capitalize %></p>
+<div>
+  <% if current_user.standard? %>
+    <%= form_tag charges_path do %>
+      <h4>Upgrade to Premium</h4>
+    <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+    <% end %>
+    <% else %>
+      <h4>Downgrade Account</h4>
+      <p>Are you sure you want to downgrade to a standard account?</p>
+      <%= link_to "Downgrade my account", charge_path(current_user), class: 'btn btn-warning', method: :patch %>
+  <% end %>
+</div>
