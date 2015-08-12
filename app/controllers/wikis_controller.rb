@@ -13,12 +13,15 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @users = User.all
     authorize @wiki
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
     authorize @wiki
+    @collaborator = Collaborator.new
   end
 
   def create

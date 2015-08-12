@@ -1,0 +1,7 @@
+<div><b>Current Collaborators</b></div>
+<% @wiki.collaborators.each do |c| %>
+  <div>
+    <%= c.id %> 
+    (<%= link_to "Remove", wiki_collaborator_path(@wiki, c), method: :delete %>)
+  </div>
+<% end %>
