@@ -1,9 +1,8 @@
 class CollaboratorsController < ApplicationController
   def create
-    byebug
-    @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
-    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
+    wiki = Wiki.find(params[:wiki_id])
+    user = User.find(params[:user_id])
+    @collaborator = Collaborator.new(wiki: wiki, user: user)
     if @collaborator.save
       flash[:notice] = "Collaborator was saved."
     else

@@ -3,8 +3,9 @@
   <div>
   <%= u.name %>
   <% if @wiki.collaborators.pluck("user_id").include?(u.id) %>
-    <%= link_to "Delete", wiki_collaborators_path(@wiki, @user), method: :delete %>
+    <%= link_to "Delete", wiki_collaborators_path(@wiki, u), method: :delete %>
   <% else %>
+  <%= u.id %>
     <%= link_to "Add", wiki_collaborators_path(@wiki, u), method: :post %>
   <% end %>
   </div>
