@@ -25,7 +25,7 @@
       <% end %>
     </div>
     <% end %>
-    <%= render partial: 'collaborators/collaborators_list', locals: {wiki: @wiki}  %>
+
     <% if current_user.is_owner_of? @wiki %>
       <%= render partial: 'collaborators/form' %>
     <% end %>

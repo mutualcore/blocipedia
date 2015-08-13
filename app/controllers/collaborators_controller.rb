@@ -2,8 +2,8 @@ class CollaboratorsController < ApplicationController
   def create
     wiki = Wiki.find(params[:wiki_id])
     user = User.find(params[:user_id])
-    @collaborator = Collaborator.new(wiki: wiki, user: user)
-    if @collaborator.save
+    collaborator = Collaborator.new(wiki: wiki, user: user)
+    if collaborator.save
       flash[:notice] = "Collaborator was saved."
     else
       flash[:error] = "Collaborator was not saved. Try again."
@@ -12,9 +12,9 @@ class CollaboratorsController < ApplicationController
   end
 
   def destroy
-    @wiki = current_user.wikis.find(params[:wiki_id])
-    @collaborator = wiki.collaborators.where(params[:id])
-    if @collaborator.destroy
+    wiki = Wiki.find(params[:wiki_id])
+    collaborator = wiki.collaborators.where(user_id: (params[:id])).first
+    if collaborator.destroy
       flash[:notice] = "Collaborator was removed."
     else
       flash[:error] = "Collaborator was not removed. Try again."

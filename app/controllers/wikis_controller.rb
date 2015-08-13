@@ -21,7 +21,6 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @users = User.all
     authorize @wiki
-    @collaborator = Collaborator.new
   end
 
   def create
