@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def is_owner_of?(wiki)
-    admin? || wiki.user == self || wiki.new_record?
+    admin? || wiki.users.include?(self) || wiki.new_record?
   end
 
   # Include default devise modules. Others available are:

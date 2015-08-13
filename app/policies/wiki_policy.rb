@@ -8,7 +8,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && (record.user == user || user.admin?)
+    user.present? && ((user.role == 'admin') || record.user == user || record.users.include?(user))
+  end
+
+  def edit?
+    destroy?
   end
 
   class Scope
